@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Button from "../components/atoms/Button"
 import Dialog from "../components/templates/Dialog"
@@ -8,7 +9,7 @@ const Board = () => {
     const articleList = [
         {
             id: 1,
-            subject: "페이팔이나 스퀘어에서 결제서비스말고 하는 장사 있음?",
+            title: "페이팔이나 스퀘어에서 결제서비스말고 하는 장사 있음?",
             nickname: "야성의돼지",
             date: "2020-12-31",
             view: 20,
@@ -16,7 +17,7 @@ const Board = () => {
         },
         {
             id: 2,
-            subject: "키움 9시반에 거래하면 수수료 더 높게받음?",
+            title: "키움 9시반에 거래하면 수수료 더 높게받음?",
             nickname: "홀짝꿀잼",
             date: "2020-12-31",
             view: 50,
@@ -24,7 +25,7 @@ const Board = () => {
         },
         {
             id: 3,
-            subject: "특정기간 발바닥부터 머리끝까지 다먹는 비율이 얼마나 될까",
+            title: "특정기간 발바닥부터 머리끝까지 다먹는 비율이 얼마나 될까",
             nickname: "ㅇㅇ",
             date: "2020-12-31",
             view: 10,
@@ -54,7 +55,9 @@ const Board = () => {
                 {articleList.map( (article)=> {
                     return <ArticleLine>
                         <ArticleId>{article.id}</ArticleId>
-                        <ArticleSubject>{article.subject}</ArticleSubject>
+                        <Link to={`board/${article.id}`}>
+                            <ArticleSubject>{article.title}</ArticleSubject>
+                        </Link>
                         <ArticleNickname>{article.nickname}</ArticleNickname>
                         <ArticleDate>{article.date}</ArticleDate>
                         <ArticleView>{article.view}</ArticleView>
@@ -81,7 +84,7 @@ export default Board;
 // 3. Design
 const Cover = styled.div`
     width: 1160px;
-    margin: 120px auto;
+    margin: 60px auto;
     font-family: tahoma,sans-serif;
     font-size: 12px;
     padding-top: 1px;

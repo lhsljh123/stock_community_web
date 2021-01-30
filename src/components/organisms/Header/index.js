@@ -18,10 +18,11 @@ const Header = () => {
                 <NavigationBar>
                     {
                       navigations.map(({ name, route }, index) => {
+                        console.log(pathname, route, "test");
                         return (
                             <NavItem
                               key={`nav-${index}`}
-                              current={pathname === route }
+                              current={route === "/" ? pathname === route : pathname.includes(route)}
                               onClick={() => onClickNavigationItem(route)}
                             >
                             {name}
